@@ -4,11 +4,16 @@ A Claude Code-powered multi-specialist consultation system for AI-driven drug de
 
 ## Overview
 
-This system provides a panel of **18 domain specialists** covering the full drug development lifecycle, designed for:
+This system provides a panel of **18 domain specialists** coordinated by an orchestrator whose primary objective is:
+
+**Maximize evidence gathered and de-risking per unit of time and money spent.**
+
+Designed for:
 - RFP/proposal development for AI drug discovery initiatives
 - Multi-agent AI architecture planning
-- Pipeline decision support
+- Pipeline decision support (prioritizing high-value experiments)
 - Preclinical-clinical translation strategy
+- Kill-early/fail-fast program management
 
 ## Specialist Panel (17 Experts)
 
@@ -70,6 +75,16 @@ For projects with clinical EMR + organoids + matched omics + perturbation data:
 | **Perturbation Readouts** | Functional Genomics Specialist | Computational Chemist, Systems Biologist |
 | **EMR-Organoid-Omics Linkage** | Clinical Data Scientist + Bioinformatician | All above |
 
+## Workflow Diagrams
+
+See **[docs/workflow-diagram.md](docs/workflow-diagram.md)** for detailed Mermaid diagrams showing:
+- Organic pipeline flow (with backtracking and iteration)
+- Specialist team deployment patterns
+- Decision gates and iteration cycles
+- Closed-loop learning detail
+- Backtracking triggers table
+- Cross-stage consultation patterns
+
 ## Closed-Loop Architecture
 
 The panel supports the agentic AI closed-loop system described in the RFP:
@@ -129,7 +144,7 @@ Structural Biologist    Chemist          Chemist            Toxicologist   Speci
 
 ```
 prompts/
-├── moderator.md                      # Orchestrator/facilitator
+├── orchestrator.md                   # Pipeline orchestrator
 └── specialists/
     ├── systems_biologist.md
     ├── structural_biologist.md

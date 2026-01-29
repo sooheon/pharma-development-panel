@@ -53,96 +53,162 @@
     "require_user_validation": true,
     "minimum_transcript_words": 100
   },
-  "project_type": "shell_scenario_planning",
-  "workflow_enforcement": "phase_based",
-  "phase_configurations": {
-    "understanding": {
-      "description": "Understand focal question and decision context",
+  "project_type": "ai_drug_discovery",
+  "workflow_enforcement": "pipeline_based",
+  "pipeline_stages": {
+    "target_discovery": {
+      "description": "Target identification and validation",
       "required_documents": [
-        "focal_question.md"
-      ],
-      "completion_trigger": "focal_question_validated"
-    },
-    "predetermined": {
-      "description": "Identify trends already in motion",
-      "required_documents": [
-        "predetermined_elements.md"
+        "target_assessment.md"
       ],
       "suggested_specialists": [
-        "geopolitician",
-        "economist",
-        "ecologist",
-        "futurist"
+        "systems_biologist",
+        "structural_biologist",
+        "functional_genomics_specialist"
       ],
-      "completion_trigger": "predetermined_elements_validated"
+      "completion_trigger": "target_validated"
     },
-    "uncertainties": {
-      "description": "Identify critical uncertainties",
+    "hit_generation": {
+      "description": "Hit finding and virtual screening",
       "required_documents": [
-        "critical_uncertainties.md"
+        "hit_list.md"
       ],
       "suggested_specialists": [
-        "anthropologist",
-        "futurist",
-        "geopolitician",
-        "economist",
-        "contrarian"
+        "computational_chemist",
+        "structural_biologist",
+        "medicinal_chemist"
       ],
-      "completion_trigger": "scenario_axes_selected"
+      "completion_trigger": "hits_prioritized"
     },
-    "scenario_development": {
-      "description": "Develop scenario narratives",
+    "lead_optimization": {
+      "description": "Hit-to-lead and lead optimization",
       "required_documents": [
-        "scenarios/*.md"
+        "lead_assessment.md"
       ],
       "suggested_specialists": [
-        "all"
+        "medicinal_chemist",
+        "computational_chemist",
+        "pharmacologist"
       ],
-      "completion_trigger": "all_scenarios_complete"
+      "completion_trigger": "candidate_selected"
     },
-    "strategy_testing": {
-      "description": "Test strategies across scenarios",
+    "preclinical": {
+      "description": "IND-enabling studies",
       "required_documents": [
-        "strategy_analysis.md"
+        "ind_readiness.md"
       ],
-      "completion_trigger": "robust_strategies_identified"
+      "suggested_specialists": [
+        "toxicologist",
+        "pharmacologist",
+        "translational_scientist",
+        "cmc_specialist"
+      ],
+      "completion_trigger": "ind_ready"
+    },
+    "clinical": {
+      "description": "Clinical development planning",
+      "required_documents": [
+        "clinical_plan.md"
+      ],
+      "suggested_specialists": [
+        "clinical_pharmacologist",
+        "oncologist",
+        "regulatory_specialist",
+        "biomarker_specialist"
+      ],
+      "completion_trigger": "clinical_strategy_approved"
     }
   },
   "specialists": {
-    "ecologist": {
-      "name": "Dr. Elena Vasquez",
-      "focus": "Systems dynamics, feedback loops, resilience",
-      "prompt_file": "prompts/specialists/ecologist.md"
+    "systems_biologist": {
+      "name": "Dr. Jin-Woo Park",
+      "focus": "Target ID, pathways, multi-omics integration",
+      "prompt_file": "prompts/specialists/systems_biologist.md"
     },
-    "geopolitician": {
-      "name": "Dr. Marcus Chen",
-      "focus": "Power, resources, state interests",
-      "prompt_file": "prompts/specialists/geopolitician.md"
+    "structural_biologist": {
+      "name": "Dr. Sarah Chen",
+      "focus": "Protein structure, binding sites, AlphaFold",
+      "prompt_file": "prompts/specialists/structural_biologist.md"
     },
-    "anthropologist": {
-      "name": "Dr. Aisha Okonkwo",
-      "focus": "Cultural shifts, values, lived experience",
-      "prompt_file": "prompts/specialists/anthropologist.md"
+    "computational_chemist": {
+      "name": "Dr. Marcus Weber",
+      "focus": "Virtual screening, ADMET, molecular simulation",
+      "prompt_file": "prompts/specialists/computational_chemist.md"
     },
-    "futurist": {
-      "name": "Dr. Kenji Tanaka",
-      "focus": "Technology capabilities, platform shifts",
-      "prompt_file": "prompts/specialists/futurist.md"
+    "medicinal_chemist": {
+      "name": "Dr. Elena Rodriguez",
+      "focus": "SAR, lead optimization, drug-likeness",
+      "prompt_file": "prompts/specialists/medicinal_chemist.md"
     },
-    "economist": {
-      "name": "Dr. Sarah Blackwood",
-      "focus": "Debt dynamics, financial structures",
-      "prompt_file": "prompts/specialists/economist.md"
+    "pharmacologist": {
+      "name": "Dr. David Kim",
+      "focus": "PK/PD, efficacy models, dose prediction",
+      "prompt_file": "prompts/specialists/pharmacologist.md"
     },
-    "contrarian": {
-      "name": "Dr. Jamie O'Sullivan",
-      "focus": "Hidden risks, challenging assumptions",
-      "prompt_file": "prompts/specialists/contrarian.md"
+    "toxicologist": {
+      "name": "Dr. Lisa Thompson",
+      "focus": "Safety assessment, IND-enabling, risk mitigation",
+      "prompt_file": "prompts/specialists/toxicologist.md"
     },
-    "researcher": {
-      "name": "Dr. Anya Petrov",
-      "focus": "Multi-source research, gap-filling analysis, contradiction resolution",
-      "prompt_file": "prompts/specialists/researcher.md"
+    "translational_scientist": {
+      "name": "Dr. Min-Ji Kang",
+      "focus": "Organoids, PDX, preclinical validation",
+      "prompt_file": "prompts/specialists/translational_scientist.md"
+    },
+    "bioinformatician": {
+      "name": "Dr. Alex Nakamura",
+      "focus": "AI/ML architecture, multi-omics pipelines",
+      "prompt_file": "prompts/specialists/bioinformatician.md"
+    },
+    "ai_scientist": {
+      "name": "Dr. Yuna Kim",
+      "focus": "Model training, evaluation, closed-loop learning",
+      "prompt_file": "prompts/specialists/ai_scientist.md"
+    },
+    "functional_genomics_specialist": {
+      "name": "Dr. Kevin Park",
+      "focus": "CRISPR screens, perturbation biology",
+      "prompt_file": "prompts/specialists/functional_genomics_specialist.md"
+    },
+    "clinical_data_scientist": {
+      "name": "Dr. Sung-Hee Cho",
+      "focus": "EMR analysis, real-world evidence",
+      "prompt_file": "prompts/specialists/clinical_data_scientist.md"
+    },
+    "biomarker_specialist": {
+      "name": "Dr. Rachel Green",
+      "focus": "Companion diagnostics, patient selection",
+      "prompt_file": "prompts/specialists/biomarker_specialist.md"
+    },
+    "cmc_specialist": {
+      "name": "Dr. Robert Zhang",
+      "focus": "Formulation, manufacturing, scale-up",
+      "prompt_file": "prompts/specialists/cmc_specialist.md"
+    },
+    "regulatory_specialist": {
+      "name": "Dr. Jennifer Park",
+      "focus": "IND/NDA strategy, FDA/MFDS/EMA",
+      "prompt_file": "prompts/specialists/regulatory_specialist.md"
+    },
+    "clinical_pharmacologist": {
+      "name": "Dr. Michael Santos",
+      "focus": "FIH design, dose selection, human PK/PD",
+      "prompt_file": "prompts/specialists/clinical_pharmacologist.md"
+    },
+    "oncologist": {
+      "name": "Dr. Hannah Lee",
+      "focus": "Disease expertise, clinical trials, patient selection",
+      "prompt_file": "prompts/specialists/oncologist.md"
+    },
+    "sarcoma_specialist": {
+      "name": "Dr. James Morrison",
+      "focus": "Rare tumors, sarcoma subtypes, orphan pathways",
+      "prompt_file": "prompts/specialists/sarcoma_specialist.md"
+    },
+    "virologist": {
+      "name": "Dr. Catherine Wu",
+      "focus": "BK virus, polyomaviruses, antivirals",
+      "prompt_file": "prompts/specialists/virologist.md"
     }
   }
 }
